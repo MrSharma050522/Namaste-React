@@ -1,49 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="./index.css" />
+        <title>Document</title>
+    </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./index.css">
-    <title>Document</title>
-</head>
-
-<body>
-    <!-- <h1>Hello Top of Root</h1> -->
-    <div id="root"></div>
-    <div id="container">
-        <!-- If we have anything inside our root tag and trying to render something inside it 
+    <body>
+        <!-- <h1>Hello Top of Root</h1> -->
+        <div id="root"></div>
+        <div id="container">
+            <!-- If we have anything inside our root tag and trying to render something inside it 
         it will replace existing tag (everything inside the root) 
         And react can work in small portion of our app just like the top and botton 
         h1 tag are the same and our react app is working in the div with id root -->
-        <!-- <h1>Test Heading</h1> -->
-    </div>
-    <!-- <h1>Hello Bottom of Root</h1> -->
+            <!-- <h1>Test Heading</h1> -->
+        </div>
+        <!-- <h1>Hello Bottom of Root</h1> -->
 
-
-    <!-- the order of these script file matters
+        <!-- the order of these script file matters
     there must be React file first, then ReactDom file and then App.js -->
-    <!-- Core React file  -->
-    <!-- This is one of the way to use react in our app other way is to install
+        <!-- Core React file  -->
+        <!-- This is one of the way to use react in our app other way is to install
      and we don't have to change the version url react@18 when new react@19 comes in for use -->
-    <!-- <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script> -->
-    <!-- this works as a bridge between react and browser React DOM -->
-    <!-- <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script> -->
+        <!-- <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script> -->
+        <!-- this works as a bridge between react and browser React DOM -->
+        <!-- <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script> -->
 
-    <!-- <script>
+        <!-- <script>
         // Creating heading using React
         const heading = React.createElement("h1", {}, "Hell World From React!");
 
-        // Creating a root by getting element by id 
+        // Creating a root by getting element by id  
         const root = ReactDOM.createRoot(document.getElementById("root"));
 
         // rendering heading inside the root created
         root.render(heading);
     </script> -->
 
-    <!-- Putting logic in different file -->
-    <script type="module" src="./App.js"></script>
-
-</body>
-
+        <!-- Putting logic in different file -->
+        <script type="module" src="./App.js"></script>
+    </body>
 </html>
