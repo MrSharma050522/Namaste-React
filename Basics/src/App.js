@@ -1,5 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import Header from "./Components/Header";
+import Body from "./Components/Body";
 
 // Creating heading using React basically this is react element which is normal js object
 /*
@@ -262,98 +264,16 @@ const TitleComponent = () => (
  * This UI is driven by config which is driven by backend
  * The UI is changing based on the data coming from backend
  *
+ * 
+ * There are two types of export/import 
+ * - Default Export/Import
+ * export default Component;
+ * import Component from "../path";
+ * 
+ * - Named Export/Import
+ * export const Component;
+ * import {Component} from "../path";
  */
-const restaurants = [
-    {
-        imgSrc: "https://images.unsplash.com/photo-1600891964599-f61ba0e24092",
-        name: "Meghana Foods",
-        description: "Biryani, North Indian, Asian",
-        rating: "4.4 Stars",
-        deliveryTime: "30 mins",
-    },
-    {
-        imgSrc: "https://www.foodiesfeed.com/wp-content/uploads/2023/06/burger-with-melted-cheese.jpg",
-        name: "Pizza Palace",
-        description: "Pizza, Italian, Fast Food",
-        rating: "4.6 Stars",
-        deliveryTime: "25 mins",
-    },
-    {
-        imgSrc: "https://images.unsplash.com/photo-1586190848861-99aa4a171e90",
-        name: "Ramen House",
-        description: "Japanese, Ramen, Noodles",
-        rating: "4.7 Stars",
-        deliveryTime: "20 mins",
-    },
-    {
-        imgSrc: "https://images.unsplash.com/photo-1578985545062-69928b1d9587",
-        name: "Dessert Delight",
-        description: "Desserts, Sweets, Bakery",
-        rating: "4.8 Stars",
-        deliveryTime: "15 mins",
-    },
-    {
-        imgSrc: "https://images.unsplash.com/photo-1565299507177-b0ac66763828",
-        name: "Pizza Perfect",
-        description: "Italian, Pizza, Fast Food",
-        rating: "4.4 Stars",
-        deliveryTime: "20 mins",
-    },
-];
-
-const Header = () => {
-    return (
-        <div className="header">
-            <div className="logo-container">
-                <img
-                    className="logo"
-                    src="https://t3.ftcdn.net/jpg/01/36/62/96/360_F_136629639_Y1FqxHd8P9nGMoV3r8iq4EnHOmo7iel7.jpg"
-                />
-            </div>
-            <div className="nav-items">
-                <ul>
-                    <li>Home</li>
-                    <li>About Us</li>
-                    <li>Contact Us</li>
-                    <li>Cart</li>
-                </ul>
-            </div>
-        </div>
-    );
-};
-
-const styleCard = {
-    backgroundColor: "#f0f0f0",
-};
-
-const RestaurantCard = (props) => {
-    return (
-        <div className="res-card" style={styleCard}>
-            <img className="res-logo" src={props.data.imgSrc} alt="res-logo" />
-            <h3>{props.data.name}</h3>
-            <h4>{props.data.description}</h4>
-            <h4>{props.data.rating}</h4>
-            <h4>{props.data.deliveryTime}</h4>
-        </div>
-    );
-};
-
-const Body = () => {
-    return (
-        <div className="body">
-            <div className="search">Search</div>
-            <div className="res-container">
-                {/* not using key (not acceptable) <<<< index as key <<<< unique id as key (best practice)*/}
-                {restaurants.map((el, i) => {
-                    return <RestaurantCard key={el.name} data={el} />;
-                })}
-                {/* <RestaurantCard /> */}
-
-                {/* Restaurant Card */}
-            </div>
-        </div>
-    );
-};
 
 const AppLout = () => {
     return (
