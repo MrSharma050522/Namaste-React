@@ -1,3 +1,4 @@
+import { CDN_LINK } from "../utils/constant";
 const styleCard = {
     backgroundColor: "#f0f0f0",
 };
@@ -5,11 +6,16 @@ const styleCard = {
 const RestaurantCard = (props) => {
     return (
         <div className="res-card" style={styleCard}>
-            <img className="res-logo" src={props.data.imgSrc} alt="res-logo" />
-            <h3>{props.data.name}</h3>
+            <img
+                className="res-logo"
+                src={CDN_LINK + props.data.info.cloudinaryImageId}
+                alt="res-logo"
+            />
+            <h3>{props.data.info.name}</h3>
             <h4>{props.data.description}</h4>
-            <h4>{props.data.rating} Stars</h4>
-            <h4>{props.data.deliveryTime}</h4>
+            <h4>{props.data.info.cuisines.join(",")}</h4>
+            <h4>{props.data.info.avgRating} Stars</h4>
+            <h4>{props.data.info.sla.deliveryTime}</h4>
         </div>
     );
 };

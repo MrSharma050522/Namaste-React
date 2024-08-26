@@ -264,15 +264,20 @@ const TitleComponent = () => (
  * This UI is driven by config which is driven by backend
  * The UI is changing based on the data coming from backend
  *
- * 
- * There are two types of export/import 
+ *
+ * There are two types of export/import
  * - Default Export/Import
  * export default Component;
  * import Component from "../path";
- * 
+ *
  * - Named Export/Import
  * export const Component;
  * import {Component} from "../path";
+ */
+/**
+ * 6th Episode
+ * Separation of concerns - Microservice architecture
+ * Single responsibility principle
  */
 
 const AppLout = () => {
