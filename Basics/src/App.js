@@ -2,6 +2,16 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./Components/Header";
 import Body from "./Components/Body";
+import {
+    createBrowserRouter,
+    Outlet,
+    Router,
+    RouterProvider,
+} from "react-router-dom";
+import About from "./Components/About";
+import Contact from "./Components/Contact";
+import Error from "./Components/Error";
+import RestaurantMenu from "./Components/RestaurantMenu";
 
 // Creating heading using React basically this is react element which is normal js object
 /*
@@ -280,14 +290,78 @@ const TitleComponent = () => (
  * Single responsibility principle
  */
 
+/**
+ * 7th Episode
+ * State variable are meant to be created at higher level inside a functional component
+ * at the top not inside a if, for, while loop not inside a function
+ *
+ *
+ * Creating appRouter and using createBrowserRouter specifying the path and component to be renderd
+ * at the spcific path and providing the RouterProvider inside our render and specifying the router
+ * which this RouterProvider has to follow. These two are provided by "react-router-dom"
+ *
+ * useRouterError is a hook given by react-router-dom
+ * and calling this function will give us an error object
+ *
+ *
+ * Two types of routing in web apps
+ * 1. Client Side Routing - when we change the routes and changes our component
+ * 2. Server Side Routing - When we get html from server
+ */
+
 const AppLout = () => {
     return (
         <div className="app">
             <Header />
-            <Body />
+            {/**
+             * if path is / then Body
+             * if path is /about then About
+             * if path is /contact then Contact
+             *
+             * So here this is Outlet provided by "react-router-dom"
+             * and this outlet will fill based on the routes of the children provided in /
+             *
+             */}
+            <Outlet />
+            {/* <Body /> */}
         </div>
     );
 };
 
+const appRouter = createBrowserRouter([
+    {
+        path: "/",
+        element: <AppLout />,
+        children: [
+            {
+                path: "/",
+                element: <Body />,
+            },
+            {
+                path: "/about",
+                element: <About />,
+            },
+            {
+                path: "/contact",
+                element: <Contact />,
+            },
+            {
+                path: "/restaurants/:resId",
+                element: <RestaurantMenu />,
+            },
+        ],
+        errorElement: <Error />,
+    },
+    // {
+    //     path: "/about",
+    //     element: <About />,
+
+    // },{
+    //     path: "/contact",
+    //     element: <Contact />,
+    // },
+]);
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<AppLout />);
+// root.render(<AppLout />);
+root.render(<RouterProvider router={appRouter} />);

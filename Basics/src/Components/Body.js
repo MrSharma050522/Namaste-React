@@ -2,6 +2,7 @@ import RestaurantCard from "./RestaurantCard";
 import restaurants from "../utils/mockData";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 const Body = () => {
     /**
@@ -109,7 +110,14 @@ const Body = () => {
             <div className="res-container">
                 {/* not using key (not acceptable) <<<< index as key <<<< unique id as key (best practice)*/}
                 {resToDisplay.map((el, i) => {
-                    return <RestaurantCard key={el.info.name} data={el} />;
+                    return (
+                        <Link
+                            key={el.info.id}
+                            to={"/restaurants/" + el.info.id}
+                        >
+                            <RestaurantCard data={el} />
+                        </Link>
+                    );
                 })}
                 {/* <RestaurantCard /> */}
 
