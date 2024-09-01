@@ -3,10 +3,10 @@ import ReactDOM from "react-dom/client";
 import Header from "./Components/Header";
 import Body from "./Components/Body";
 import {
-    createBrowserRouter,
-    Outlet,
-    Router,
-    RouterProvider,
+	createBrowserRouter,
+	Outlet,
+	Router,
+	RouterProvider,
 } from "react-router-dom";
 import About from "./Components/About";
 import Contact from "./Components/Contact";
@@ -17,7 +17,7 @@ import RestaurantMenu from "./Components/RestaurantMenu";
 /*
 const heading = React.createElement(
     "h1",
-    // this object is used to give elements attributes
+    this object is used to give elements attributes
     {
         id: "heading",
         test: "abc",
@@ -309,57 +309,62 @@ const TitleComponent = () => (
  * 2. Server Side Routing - When we get html from server
  */
 
+/**
+ * 8th Episode
+ *
+ */
+
 const AppLout = () => {
-    return (
-        <div className="app">
-            <Header />
-            {/**
-             * if path is / then Body
-             * if path is /about then About
-             * if path is /contact then Contact
-             *
-             * So here this is Outlet provided by "react-router-dom"
-             * and this outlet will fill based on the routes of the children provided in /
-             *
-             */}
-            <Outlet />
-            {/* <Body /> */}
-        </div>
-    );
+	return (
+		<div className="app">
+			<Header />
+			{/**
+			 * if path is / then Body
+			 * if path is /about then About
+			 * if path is /contact then Contact
+			 *
+			 * So here this is Outlet provided by "react-router-dom"
+			 * and this outlet will fill based on the routes of the children provided in /
+			 *
+			 */}
+			<Outlet />
+			{/* <Body /> */}
+		</div>
+	);
 };
 
 const appRouter = createBrowserRouter([
-    {
-        path: "/",
-        element: <AppLout />,
-        children: [
-            {
-                path: "/",
-                element: <Body />,
-            },
-            {
-                path: "/about",
-                element: <About />,
-            },
-            {
-                path: "/contact",
-                element: <Contact />,
-            },
-            {
-                path: "/restaurants/:resId",
-                element: <RestaurantMenu />,
-            },
-        ],
-        errorElement: <Error />,
-    },
-    // {
-    //     path: "/about",
-    //     element: <About />,
+	{
+		path: "/",
+		element: <AppLout />,
+		children: [
+			{
+				path: "/",
+				element: <Body />,
+			},
+			{
+				path: "/about",
+				element: <About />,
+			},
+			{
+				path: "/contact",
+				element: <Contact />,
+			},
+			{
+				path: "/restaurants/:resId",
+				element: <RestaurantMenu />,
+			},
+		],
+		errorElement: <Error />,
+	},
+	// {
+	//     path: "/about",
+	//     element: <About />,
 
-    // },{
-    //     path: "/contact",
-    //     element: <Contact />,
-    // },
+	// },{
+	//     path: "/contact",
+	//     element: <Contact />,
+	// },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
