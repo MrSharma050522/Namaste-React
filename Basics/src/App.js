@@ -1,4 +1,4 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./Components/Header";
 import Body from "./Components/Body";
@@ -12,6 +12,7 @@ import About from "./Components/About";
 import Contact from "./Components/Contact";
 import Error from "./Components/Error";
 import RestaurantMenu from "./Components/RestaurantMenu";
+const Grocery = lazy(() => import("./Components/Grocery"));
 
 // Creating heading using React basically this is react element which is normal js object
 /*
@@ -312,6 +313,20 @@ const TitleComponent = () => (
 /**
  * 8th Episode
  *
+ * 9th Episode
+ * - Single Responsibility Principle
+ * - A component or function should follow single responsibility
+ * - This will make code more "Reusable", "Maintainable" and "Testable"
+ *
+ * - A "Hook" is a normal utility function
+ *
+ * - "CHUNKING / CODE-SPLITTING / DYNAMIC-BUNDLING / LAZY-LOADING / ON-DEMAND-LOADING / DYNAMIC-IMPORT"
+ * - Basically this makes our app fast since we do bundling in smaller chunks
+ * - for different component we do separate bundling so it do not take much time to load
+ * - Using Grocery to show the concept of Chunking/Lazy-Loading
+ * - Now when we load this will not be there when we will go to our grocery page
+ * - this will load our grocery component and will bundle that to show in ui
+ * - const Grocery = lazy(()=>import("./Components/Grocery"))
  */
 
 const AppLout = () => {
@@ -349,6 +364,14 @@ const appRouter = createBrowserRouter([
 			{
 				path: "/contact",
 				element: <Contact />,
+			},
+			{
+				path: "/grocery",
+				element: (
+					<Suspense fallback={<h1>Loading test - - - </h1>}>
+						<Grocery />
+					</Suspense>
+				),
 			},
 			{
 				path: "/restaurants/:resId",

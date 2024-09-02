@@ -3,6 +3,7 @@ import restaurants from "../utils/mockData";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
 	/**
@@ -47,18 +48,22 @@ const Body = () => {
 	};
 
 	const fetchData = async () => {
-		const data = await fetch(
-			"https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9121181&lng=77.6445548&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-		);
-		const json = await data.json();
-		setResToDisplay(
-			json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
-				?.restaurants
-		);
-		setAllRestaurants(
-			json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
-				?.restaurants
-		);
+		try {
+			const data = await fetch(
+				"https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9121181&lng=77.6445548&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+			);
+			const json = await data.json();
+			setResToDisplay(
+				json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+					?.restaurants
+			);
+			setAllRestaurants(
+				json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+					?.restaurants
+			);
+		} catch (error) {
+			console.error("Error -> ", error);
+		}
 	};
 
 	useEffect(() => {
@@ -70,6 +75,9 @@ const Body = () => {
 	// if(resToDisplay.length === 0){
 	//     return <Shimmer />
 	// }
+
+	const onlineStatus = useOnlineStatus();
+	if (!onlineStatus) return <h1>Looks like you're Offline!!</h1>;
 
 	return resToDisplay.length === 0 ? (
 		<Shimmer />
