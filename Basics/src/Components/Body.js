@@ -79,21 +79,22 @@ const Body = () => {
 	const onlineStatus = useOnlineStatus();
 	if (!onlineStatus) return <h1>Looks like you're Offline!!</h1>;
 
-	return resToDisplay.length === 0 ? (
+	return resToDisplay?.length === 0 ? (
 		<Shimmer />
 	) : (
 		<div className="body">
-			<div className="filter">
-				<div className="search">
+			<div className="filter flex items-center">
+				<div className="search m-4 p-4 ">
 					<input
 						type="text"
-						className="search-box"
+						className="search-box border border-solid border-black"
 						value={searchText}
 						onChange={(e) => {
 							setSearchText(e.target.value);
 						}}
 					/>
 					<button
+						className="px-4 py-1 m-4 bg-green-600 cursor-pointer rounded-lg"
 						onClick={() => {
 							console.log(resToDisplay);
 							const temp = allRestaurants.filter((res) =>
@@ -109,13 +110,13 @@ const Body = () => {
 					</button>
 				</div>
 				<button
-					className="filter-btn"
+					className="filter-btn px-4 py-1 m-4 bg-gray-500 cursor-pointer rounded-lg"
 					onClick={filterTopRatedRestaurantsHandler}
 				>
 					Top Rated Restaurant
 				</button>
 			</div>
-			<div className="res-container">
+			<div className="res-container flex flex-wrap">
 				{/* not using key (not acceptable) <<<< index as key <<<< unique id as key (best practice)*/}
 				{resToDisplay.map((el, i) => {
 					return (

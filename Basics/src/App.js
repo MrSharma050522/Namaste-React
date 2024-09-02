@@ -329,6 +329,20 @@ const TitleComponent = () => (
  * - const Grocery = lazy(()=>import("./Components/Grocery"))
  */
 
+/**
+ * 10th Episode
+ * - "STYLING"
+ * - Normal css
+ * - SCSS
+ * - SASS
+ * - Sytled Component
+ * - Material Ui
+ * - Tailwind Css
+ * - Ant Design
+ * - Chakra Ui
+ * - Bootstrap
+ */
+
 const AppLout = () => {
 	return (
 		<div className="app">
